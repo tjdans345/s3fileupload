@@ -33,10 +33,7 @@ public class FileRestController {
     @PostMapping
     public HttpEntity<?> uploadFile(@RequestPart("file")MultipartFile file,
                                     @RequestParam("category")FileCategory category) throws IOException {
-
-        System.out.println("dddsad");
         FileDTO savedFile = fileService.saveFile(file, category);
-
         return fileSaveResult(savedFile);
     }
 

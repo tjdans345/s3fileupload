@@ -6,9 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +34,9 @@ public class FileEntity {
 
     @Enumerated(EnumType.STRING)
     private FileCategory category;
+
+    @CreationTimestamp
+    private LocalDateTime createDate;
 
     public FileDTO toDTO() {
         return FileDTO.builder()

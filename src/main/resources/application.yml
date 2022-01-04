@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+
+  application:
+    name: s3fileupload
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      use-new-id-generator-mappings: false
+      ddl-auto: create
+    show_sql: true
+    generate-ddl: true
+    properties:
+      hibernate.format_sql: true
+    defer-datasource-initialization: true
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAVSBL7HEWMOMHOGM7
+      secretKey: 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
+    s3:
+      bucket: lawshop-test
+      location: jadoo/
+#      uri_path: /jadoo
+      deleteYn: N
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false

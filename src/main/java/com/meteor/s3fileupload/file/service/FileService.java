@@ -25,12 +25,12 @@ public class FileService {
     private final FileRepository fileRepository;
     private final FileListRepository fileListRepository;
 
-
     // file upload
     @Transactional
     public FileDTO saveFile(MultipartFile file, FileCategory category ) throws IOException {
         // Save File
         String url = awsS3Service.uploadFile(file);
+
         FileEntity savedFile = fileRepository.save(
                 FileEntity.builder()
                         .category(category)
