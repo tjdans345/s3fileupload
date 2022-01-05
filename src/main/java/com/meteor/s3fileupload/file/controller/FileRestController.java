@@ -5,6 +5,7 @@ import com.meteor.s3fileupload.common.ResponseDTO;
 import com.meteor.s3fileupload.enumpackge.FileCategory;
 import com.meteor.s3fileupload.enumpackge.ResponseEnum;
 import com.meteor.s3fileupload.file.domain.dto.FileDTO;
+import com.meteor.s3fileupload.file.domain.dto.MemberDTO;
 import com.meteor.s3fileupload.file.domain.dto.TestDTO;
 import com.meteor.s3fileupload.file.service.FileService;
 import lombok.RequiredArgsConstructor;
@@ -39,8 +40,16 @@ public class FileRestController {
 //    }
 
     // Ver.2 file Object + DataObject 받아오기 테스트
+//    @PostMapping
+//    public HttpEntity<?> uploadFile(TestDTO testDTO) throws IOException {
+//        FileDTO savedFile = fileService.saveFile(testDTO.getFile(), testDTO.getCategory());
+//        return fileSaveResult(savedFile);
+//    }
+
+    // Ver.3 @RequestPart 사용 file Object + DataObject 받아오기 테스트
     @PostMapping
-    public HttpEntity<?> uploadFile(TestDTO testDTO) throws IOException {
+    public HttpEntity<?> uploadFile(TestDTO testDTO
+                                    , @RequestPart("memberDTO")MemberDTO memberDTO) throws IOException {
         FileDTO savedFile = fileService.saveFile(testDTO.getFile(), testDTO.getCategory());
         return fileSaveResult(savedFile);
     }

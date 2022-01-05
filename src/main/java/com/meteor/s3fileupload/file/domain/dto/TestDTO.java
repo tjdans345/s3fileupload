@@ -9,5 +9,5 @@ import org.springframework.web.multipart.MultipartFile;
 public class TestDTO {
     private MultipartFile file;
     private FileCategory category;
-    private MemberDTO memberDTO;
+//    private MemberDTO memberDTO; 이렇게는 messageConverter Binding 안됨
 }
