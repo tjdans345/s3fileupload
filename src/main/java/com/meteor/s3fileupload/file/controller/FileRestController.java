@@ -5,6 +5,7 @@ import com.meteor.s3fileupload.common.ResponseDTO;
 import com.meteor.s3fileupload.enumpackge.FileCategory;
 import com.meteor.s3fileupload.enumpackge.ResponseEnum;
 import com.meteor.s3fileupload.file.domain.dto.FileDTO;
+import com.meteor.s3fileupload.file.domain.dto.TestDTO;
 import com.meteor.s3fileupload.file.service.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -30,10 +31,17 @@ public class FileRestController {
      * @return
      * @throws IOException
      */
+//    @PostMapping
+//    public HttpEntity<?> uploadFile(@RequestPart("file")MultipartFile file,
+//                                    @RequestParam("category")FileCategory category) throws IOException {
+//        FileDTO savedFile = fileService.saveFile(file, category);
+//        return fileSaveResult(savedFile);
+//    }
+
+    // Ver.2 file Object + DataObject 받아오기 테스트
     @PostMapping
-    public HttpEntity<?> uploadFile(@RequestPart("file")MultipartFile file,
-                                    @RequestParam("category")FileCategory category) throws IOException {
-        FileDTO savedFile = fileService.saveFile(file, category);
+    public HttpEntity<?> uploadFile(TestDTO testDTO) throws IOException {
+        FileDTO savedFile = fileService.saveFile(testDTO.getFile(), testDTO.getCategory());
         return fileSaveResult(savedFile);
     }
 
