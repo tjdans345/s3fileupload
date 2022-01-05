@@ -32,12 +32,12 @@ public class FileRestController {
      * @return
      * @throws IOException
      */
-//    @PostMapping
-//    public HttpEntity<?> uploadFile(@RequestPart("file")MultipartFile file,
-//                                    @RequestParam("category")FileCategory category) throws IOException {
-//        FileDTO savedFile = fileService.saveFile(file, category);
-//        return fileSaveResult(savedFile);
-//    }
+    @PostMapping
+    public HttpEntity<?> uploadFile(@RequestPart("file")MultipartFile file,
+                                    @RequestParam("category")FileCategory category) throws IOException {
+        FileDTO savedFile = fileService.saveFile(file, category);
+        return fileSaveResult(savedFile);
+    }
 
     // Ver.2 file Object + DataObject 받아오기 테스트
 //    @PostMapping
@@ -47,12 +47,12 @@ public class FileRestController {
 //    }
 
     // Ver.3 @RequestPart 사용 file Object + DataObject 받아오기 테스트
-    @PostMapping
-    public HttpEntity<?> uploadFile(TestDTO testDTO
-                                    , @RequestPart("memberDTO")MemberDTO memberDTO) throws IOException {
-        FileDTO savedFile = fileService.saveFile(testDTO.getFile(), testDTO.getCategory());
-        return fileSaveResult(savedFile);
-    }
+//    @PostMapping
+//    public HttpEntity<?> uploadFile(TestDTO testDTO
+//                                    , @RequestPart("memberDTO")MemberDTO memberDTO) throws IOException {
+//        FileDTO savedFile = fileService.saveFile(testDTO.getFile(), testDTO.getCategory());
+//        return fileSaveResult(savedFile);
+//    }
 
     @PostMapping("/add")
     public HttpEntity<Object> uploadImageAddFile(
